@@ -1,0 +1,16 @@
+Install xml2rfc
+===============
+
+pip install xml2rfc
+brew install rfcdiff
+pkg_add xml2rfc
+
+Generate HTML
+=============
+
+type 'make'
+
+or
+
+xml2rfc draft-xxxx.xml
+rfcdiff draft-xxxx-yy.txt draft-xxxx-yy+1.txt
