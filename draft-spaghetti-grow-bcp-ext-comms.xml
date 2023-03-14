@@ -59,6 +59,16 @@
             </t>
         </section>
 
+        <section title="Background">
+          <t>
+            ... explaining the previous usage of ext communities ...
+          </t>
+          <t>
+            another paragraph...
+          </t>
+        </section>
+
+
         <section title="Recommendation">
             <t>
                 derp
