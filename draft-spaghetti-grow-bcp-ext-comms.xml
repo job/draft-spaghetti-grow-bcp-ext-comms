@@ -59,6 +59,13 @@
             </t>
         </section>
 
+        <section title="Background">
+            <t>
+                The background for Extended Communities is to be utilized within L3-VPNs, but has also been used for operational communities within the IXP Route-servers.
+                This was due to lack of support for BGP Large Communities and the need to address operational communities towards 32Bit ASNs.
+                ...
+            </t>
+        </section>
         <section title="Recommendation">
             <t>
                 derp
