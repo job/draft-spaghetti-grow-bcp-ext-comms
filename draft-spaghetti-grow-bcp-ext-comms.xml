@@ -37,7 +37,7 @@
 
         <abstract>
             <t>
-                This document outlines a recommendation to the Internet operational community to reject BGP routes to which BGP Extended Communities are attached.
+                This document outlines a recommendation to the Internet operational community to discourage the use of BGP Extended Communities in BGP announcements.
                 It includes guidance for both IP networks and Internet Exchange Points (IXPs).
                 This approach helps ensure the global Internet routing system performance and helps protect Route Server stakeholders against against misconfigurations.
             </t>
@@ -47,7 +47,7 @@
     <middle>
         <section anchor="Introduction" title="Introduction">
             <t>
-                This document outlines a recommendation to the Internet operational community to reject BGP routes to which BGP Extended Communities are attached.
+                This document outlines a recommendation to the Internet operational community to discourage the use of BGP Extended Communities in BGP announcements.
                 It includes guidance for both IP networks and Internet Exchange Points (IXPs).
                 This approach helps ensure the global Internet routing system performance and helps protect Route Server stakeholders against against misconfigurations.
             </t>
