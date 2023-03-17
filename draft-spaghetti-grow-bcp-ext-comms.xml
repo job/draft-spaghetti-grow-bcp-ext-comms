@@ -25,6 +25,17 @@
                 <email>job@fastly.com</email>
             </address>
         </author>
+         
+        <author fullname="Stavros Konstantaras" initials="S." surname="Konstantaras">
+            <organization abbrev="AMS-IX">Amsterdam Internet Exchange</organization>
+            <address>
+                <postal>
+                    <city>Amsterdam</city>
+                    <country>NL</country>
+                </postal>
+                <email>stavros.konstantaras@ams-ix.net</email>
+            </address>
+        </author>
 
         <date />
 
