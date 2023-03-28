@@ -79,7 +79,7 @@
         </section>
         <section title="Recommendation">
             <t>
-                Network Operators that tag route announcements with operational extended-communities for 32Bit ASNs at an IXP should replace these communities with Large Communities (RFC 9092) at the earliest convenience and follow any best common practices set out by the IXP operator or RFC 8195.
+                Network Operators that tag route announcements with operational extended-communities for 32Bit ASNs at an IXP should replace these communities with Large Communities (RFC 8092) at the earliest convenience and follow any best common practices set out by the IXP operator or RFC 8195.
             </t>
         </section>
 
@@ -108,11 +108,15 @@
 
         <references title="Normative References">
             <?rfc include="reference.RFC.2119.xml"?>
-            <?rfc include="reference.RFC.8174.xml"?>
+            <?rfc include="reference.RFC.8174.xml"?
         </references>
 
 <!--
         <references title="Informative References">
+            <?rfc include="reference.RFC.4360.xml"?>
+            <?rfc include="reference.RFC.7153.xml"?>
+            <?rfc include="reference.RFC.8092.xml"?>
+            <?rfc include="reference.RFC.8195.xml"?>
         </references>
 -->
 
