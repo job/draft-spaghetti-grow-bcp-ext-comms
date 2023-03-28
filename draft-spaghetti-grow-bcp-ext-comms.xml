@@ -79,7 +79,7 @@
         </section>
         <section title="Recommendation">
             <t>
-                derp
+                Network Operators that tag route announcements with operational extended-communities for 32Bit ASNs at an IXP should replace these communities with Large Communities (RFC 9092) at the earliest convenience and follow any best common practices set out by the IXP operator or RFC 8195.
             </t>
         </section>
 
