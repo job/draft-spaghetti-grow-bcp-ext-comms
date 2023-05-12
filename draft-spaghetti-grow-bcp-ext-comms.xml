@@ -73,8 +73,18 @@
         <section title="Background">
             <t>
                 The background for Extended Communities is to be utilized within L3-VPNs, but has also been used for operational communities within the IXP Route-servers.
-                This was due to lack of support for BGP Large Communities and the need to address operational communities towards 32Bit ASNs.
-                ...
+                This was due to lack of support for 32bit ASNs in standard BGP communities, thus operators had to find a method that could allow BGP signaling from IXP customers with 32bit ASN. 
+                The 6-octets space for the global and local administrator part of the BGP Extended community is sufficient space for inserting one 32bit AS number. 
+                </t><t>
+                However, the 6-octet space is not sufficient enough if a 32bit ASN customer of an IXP wants to send a signal to a 32bit ASN Route server or to another 32bit ASN customer. 
+                Moreover, the flexibility to insert a 32bit ASN either in the global or the local administrator part, proved to bring extra complexity both in the BGP code implementations and in the fuctions that are being triggered from BGP extended communities. 
+                Although, this method proved to be a widely acceptable workaround that could serve the purpose for the time being, a more robust and future proof solution was needed that could overcome the aforementioned obstacles. 
+                </t><t>
+                RFC8092 (BGP Large communities) aims to address the operational requirements towards 32Bit ASNs. With a total space of 12-octets divided in 3 seperate fields, the possibility to implement any to any BGP signalling is automatically unlocked, thus making the use of BGP extended communities unnecessary. 
+                Since the introduction of BGP Large communities in 2017, all vendors of network equipment have implemented the new standard in their OS implementations, making this feature usable in every BGP implementation available in the market. 
+                </t><t>
+                However, there are still network and IXP operators that continue to support BGP extended communities. Supporing three flavors of BGP communities can contribute in reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time a BGP community is introduced, removed or modified. 
+                Large portions of frequent BGP UPDATE messages tend to keep the router's CPU busy for an extendend period of time, especially if the router receiving those frequent BGP UPDATE messages has Established BPG sessions with multiple other BGP speakers. 
             </t>
         </section>
         <section title="Recommendation">
@@ -86,13 +96,14 @@
         <section anchor="Acknowledgments" title="Acknowledgments">
             <t>
                 The authors would like to thank the following people for their contributions to this document:
-                ...
+                    Moyaze Shivji "Linx.net"
+
             </t>
         </section>
 
         <section anchor="Security" title="Security Considerations">
             <t>
-                There are no security considerations.
+                There are no security considerations accompanying this document. 
             </t>
         </section>
 
@@ -110,15 +121,13 @@
             <?rfc include="reference.RFC.2119.xml"?>
             <?rfc include="reference.RFC.8174.xml"?
         </references>
-
-<!--
+        <!--
         <references title="Informative References">
             <?rfc include="reference.RFC.4360.xml"?>
             <?rfc include="reference.RFC.7153.xml"?>
             <?rfc include="reference.RFC.8092.xml"?>
             <?rfc include="reference.RFC.8195.xml"?>
-        </references>
--->
-
+        </references> 
+        -->
     </back>
 </rfc>
