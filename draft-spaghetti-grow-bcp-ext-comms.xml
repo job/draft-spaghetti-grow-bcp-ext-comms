@@ -36,6 +36,18 @@
                 <email>stavros.konstantaras@ams-ix.net</email>
             </address>
         </author>
+         
+        <author fullname="Mo Shivji" initials="M." surname="Shivji">
+            <organization abbrev="LINX">London Internet Exchange Ltd</organization>
+            <address>
+                <postal>
+                    <city>London</city>
+                    <country>UK</country>
+                </postal>
+                <email>moyaze@linx.net</email>
+            </address>
+        </author>
+
 
         <date />
 
