@@ -25,7 +25,7 @@
                 <email>job@fastly.com</email>
             </address>
         </author>
-         
+
         <author fullname="Stavros Konstantaras" initials="S." surname="Konstantaras">
             <organization abbrev="AMS-IX">Amsterdam Internet Exchange</organization>
             <address>
@@ -48,9 +48,9 @@
 
         <abstract>
             <t>
-                This document outlines a recommendation to the Internet operational community to discourage the use of BGP Extended Communities in BGP announcements.
-                It includes guidance for both IP networks and Internet Exchange Points (IXPs).
-                This approach helps ensure the global Internet routing system performance and helps protect Route Server stakeholders against against misconfigurations.
+                This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities in BGP announcements.
+                It includes guidance for both Internet Service Provider networks and Internet Exchange Points (IXPs).
+                This approach aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
             </t>
         </abstract>
     </front>
@@ -58,9 +58,9 @@
     <middle>
         <section anchor="Introduction" title="Introduction">
             <t>
-                This document outlines a recommendation to the Internet operational community to discourage the use of BGP Extended Communities in BGP announcements.
-                It includes guidance for both IP networks and Internet Exchange Points (IXPs).
-                This approach helps ensure the global Internet routing system performance and helps protect Route Server stakeholders against misconfigurations.
+                This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities <xref target="RFC4360"/> in BGP announcements.
+                It includes guidance for both Internet Service Provider networks and Internet Exchange Points (IXPs).
+                This approach aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
             </t>
         </section>
 
@@ -72,24 +72,33 @@
 
         <section title="Background">
             <t>
-                The background for Extended Communities is to be utilized within L3-VPNs, but has also been used for operational communities within the IXP Route-servers.
-                This was due to lack of support for 32bit ASNs in standard BGP communities, thus operators had to find a method that could allow BGP signaling from IXP customers with 32bit ASN. 
-                The 6-octets space for the global and local administrator part of the BGP Extended community is sufficient space for inserting one 32bit AS number. 
-                </t><t>
-                However, the 6-octet space is not sufficient enough if a 32bit ASN customer of an IXP wants to send a signal to a 32bit ASN Route server or to another 32bit ASN customer. 
-                Moreover, the flexibility to insert a 32bit ASN either in the global or the local administrator part, proved to bring extra complexity both in the BGP code implementations and in the fuctions that are being triggered from BGP extended communities. 
-                Although, this method proved to be a widely acceptable workaround that could serve the purpose for the time being, a more robust and future proof solution was needed that could overcome the aforementioned obstacles. 
-                </t><t>
-                RFC8092 (BGP Large communities) aims to address the operational requirements towards 32Bit ASNs. With a total space of 12-octets divided in 3 seperate fields, the possibility to implement any to any BGP signalling is automatically unlocked, thus making the use of BGP extended communities unnecessary. 
-                Since the introduction of BGP Large communities in 2017, all vendors of network equipment have implemented the new standard in their OS implementations, making this feature usable in every BGP implementation available in the market. 
-                </t><t>
-                However, there are still network and IXP operators that continue to support BGP extended communities. Supporing three flavors of BGP communities can contribute in reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time a BGP community is introduced, removed or modified. 
-                Large portions of frequent BGP UPDATE messages tend to keep the router's CPU busy for an extendend period of time, especially if the router receiving those frequent BGP UPDATE messages has Established BPG sessions with multiple other BGP speakers. 
+                The main use-case for Extended Communities are as Route Targets within VPN <xref target="RFC4364"/> deployments, but Extended Communities historically also have been used as an operational utility to signal requests to IXP Route-servers <xref target="RFC7947"/>, <xref target="RFC7948"/> such as functionality to reduce propagation scope or AS_PATH prepending.
+            </t>
+            <t>
+                Use of Extended Communities arose from a lack of support to fit 4-octet Autonomous System Numbers (ASNs) <xref target="RFC4893"/> in Classic BGP communities <xref target="RFC1997"/>, thus operators improvised a method that could allow BGP signaling from IXP participants with 4-octet ASN.
+                The 6-octet space for the Global and Local administrator part of the BGP Extended Community provides sufficient space for a single 4-octet ASN.
+                However, the 6-octet space is not sufficient enough should a 4-octet ASN participant of an IXP want to send a signal to a 4-octet ASN Route Server or to another 4-octet ASN participant.
+                Moreover, the flexibility to insert a 4-octet ASN either in the Global or the Local Administrator part, proved to bring extra complexity both in the BGP implementations and in the route propagation functions that are being triggered through BGP Extended Communities.
+                Although, this method was widely considered to be a acceptable workaround for a period of time, a more robust and future proof solution was needed that could overcome the aforementioned obstacles.
+             </t>
+             <t>
+                BGP Large communities <xref target="RFC8092"/> addressed the operational requirements for working with 4-octet ASNs in a variety of scenarios.
+                With a total space of 12 octets divided into 3 separate fields, signalling between 2-octet ASNs and 4-octet ASNs, or 4-octet ASNs and 4-octet ASNs, making the use of BGP Extended Communities redundant.
+                Since the introduction of BGP Large communities in 2017 - by now - virtually all BGP implementations have adopted this standard, making this feature usable all public Internet deployments.
+             </t>
+             <t>
+                At the moment of writing, there are still IP Network and IXP operators that support BGP Extended Communities for IXP Route Server signalling purposes.
+                However, supporting three flavors of BGP Communities (Classic, Large, and Extended) contribute to increased memory consumption, increased complexity in Routing Policies, and in reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time any type of BGP Community is added, removed or modified.
+                As each and every BGP UPDATE message propagated and received requires CPU cycles for processing, any efforts that mimize the number of BGP UPDATE messages are advantageous for the routing system.
+                The authors of this document posit that Extended Communities are superfluous in context of the existence of Large Communities.
             </t>
         </section>
         <section title="Recommendation">
             <t>
-                Network Operators that tag route announcements with operational extended-communities for 32Bit ASNs at an IXP should replace these communities with Large Communities (RFC 8092) at the earliest convenience and follow any best common practices set out by the IXP operator or RFC 8195.
+                Operators that tag or match on route announcements on the public Internet with Extended Communities for 4-octet ASNs are RECOMMENDED to replace these configurations with equivalent functionality implemented using Large Communities <xref target="RFC8092"/>.
+            </t>
+            <t>
+                Operators of Internet Exchange Route Servers are RECOMMENDED to scrub Extended Communities in both inbound and outbound directions.
             </t>
         </section>
 
@@ -103,7 +112,7 @@
 
         <section anchor="Security" title="Security Considerations">
             <t>
-                There are no security considerations accompanying this document. 
+                There are no security considerations accompanying this document.
             </t>
         </section>
 
@@ -119,15 +128,20 @@
 
         <references title="Normative References">
             <?rfc include="reference.RFC.2119.xml"?>
-            <?rfc include="reference.RFC.8174.xml"?
+            <?rfc include="reference.RFC.8174.xml"?>
         </references>
-        <!--
         <references title="Informative References">
+            <?rfc include="reference.RFC.1997.xml"?>
             <?rfc include="reference.RFC.4360.xml"?>
-            <?rfc include="reference.RFC.7153.xml"?>
+            <?rfc include="reference.RFC.4364.xml"?>
+            <?rfc include="reference.RFC.4893.xml"?>
+            <?rfc include="reference.RFC.7947.xml"?>
+            <?rfc include="reference.RFC.7948.xml"?>
             <?rfc include="reference.RFC.8092.xml"?>
+<!--
+            <?rfc include="reference.RFC.7153.xml"?>
             <?rfc include="reference.RFC.8195.xml"?>
-        </references> 
-        -->
+-->
+        </references>
     </back>
 </rfc>
