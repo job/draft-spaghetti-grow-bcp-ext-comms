@@ -91,16 +91,16 @@
                 The 6-octet space for the Global and Local administrator part of the BGP Extended Community provides sufficient space for a single 4-octet ASN.
                 However, the 6-octet space is not sufficient enough should a 4-octet ASN participant of an IXP want to send a signal to a 4-octet ASN Route Server or to another 4-octet ASN participant.
                 Moreover, the flexibility to insert a 4-octet ASN either in the Global or the Local Administrator part, proved to bring extra complexity both in the BGP implementations and in the route propagation functions that are being triggered through BGP Extended Communities.
-                Although, this method was widely considered to be a acceptable workaround for a period of time, a more robust and future proof solution was needed that could overcome the aforementioned obstacles.
+                Although, this method was widely considered to be an acceptable workaround for a period of time, a more robust and future proof solution was needed that could overcome the aforementioned obstacles.
              </t>
              <t>
                 BGP Large communities <xref target="RFC8092"/> addressed the operational requirements for working with 4-octet ASNs in a variety of scenarios.
                 With a total space of 12 octets divided into 3 separate fields, signalling between 2-octet ASNs and 4-octet ASNs, or 4-octet ASNs and 4-octet ASNs, making the use of BGP Extended Communities redundant.
-                Since the introduction of BGP Large communities in 2017 - by now - virtually all BGP implementations have adopted this standard, making this feature usable all public Internet deployments.
+                Since the introduction of BGP Large communities in 2017 - by now - virtually all BGP implementations have adopted this standard, making this feature usable in all public Internet deployments.
              </t>
              <t>
                 At the moment of writing, there are still IP Network and IXP operators that support BGP Extended Communities for IXP Route Server signalling purposes.
-                However, supporting three flavors of BGP Communities (Classic, Large, and Extended) contribute to increased memory consumption, increased complexity in Routing Policies, and in reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time any type of BGP Community is added, removed or modified.
+                However, supporting three flavors of BGP Communities (Classic, Large, and Extended) contribute to increased memory consumption, increased complexity in Routing Policies, and reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time any type of BGP Community is added, removed or modified.
                 As each and every BGP UPDATE message propagated and received requires CPU cycles for processing, any efforts that mimize the number of BGP UPDATE messages are advantageous for the routing system.
                 The authors of this document posit that Extended Communities are superfluous in context of the existence of Large Communities.
             </t>
@@ -115,11 +115,11 @@
         </section>
 
         <section anchor="Acknowledgments" title="Acknowledgments">
-            <t>
+            <!--<t>
                 The authors would like to thank the following people for their contributions to this document:
                     Moyaze Shivji "Linx.net"
 
-            </t>
+            </t> -->
         </section>
 
         <section anchor="Security" title="Security Considerations">
