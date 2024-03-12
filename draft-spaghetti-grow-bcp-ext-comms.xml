@@ -84,7 +84,7 @@
 
         <section title="Background">
             <t>
-                The main use-case for Extended Communities are as Route Targets within VPN <xref target="RFC4364"/> deployments, but Extended Communities historically also have been used as an operational utility to signal requests to IXP Route-servers <xref target="RFC7947"/>, <xref target="RFC7948"/> such as functionality to reduce propagation scope or AS_PATH prepending.
+                The main use-case for Extended Communities are as Route Targets within VPN <xref target="RFC4364"/> deployments, but Extended Communities historically also have been used as an operational utility to signal requests to IXP Route Servers <xref target="RFC7947"/>, <xref target="RFC7948"/> such as functionality to reduce propagation scope or AS_PATH prepending.
             </t>
             <t>
                 Use of Extended Communities arose from a lack of support to fit 4-octet Autonomous System Numbers (ASNs) <xref target="RFC4893"/> in Classic BGP communities <xref target="RFC1997"/>, thus operators improvised a method that could allow BGP signaling from IXP participants with 4-octet ASN.
@@ -99,9 +99,9 @@
                 Since the introduction of BGP Large communities in 2017 - by now - virtually all BGP implementations have adopted this standard, making this feature usable in all public Internet deployments.
              </t>
              <t>
-                At the moment of writing, there are still IP Network and IXP operators that support BGP Extended Communities for IXP Route Server signalling purposes.
-                However, supporting three flavors of BGP Communities (Classic, Large, and Extended) contribute to increased memory consumption, increased complexity in Routing Policies, and reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time any type of BGP Community is added, removed or modified.
-                As each and every BGP UPDATE message propagated and received requires CPU cycles for processing, any efforts that mimize the number of BGP UPDATE messages are advantageous for the routing system.
+                At the moment of writing this recommendation, there are still IP Network and IXP operators that support BGP Extended Communities for IXP Route Server signaling purposes.
+                However, supporting three flavors of BGP Communities (Classic, Large, and Extended) contribute to increased memory consumption, increased complexity in Routing Policies, and reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time any type of BGP Community is added, removed, or modified.
+                As each and every BGP UPDATE message propagated and received requires CPU cycles for processing, any efforts that minimize the number of BGP UPDATE messages are advantageous for the routing system.
                 The authors of this document posit that Extended Communities are superfluous in context of the existence of Large Communities.
             </t>
         </section>
