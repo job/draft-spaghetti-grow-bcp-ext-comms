@@ -7,7 +7,7 @@
 
 <rfc category="bcp"
      ipr="trust200902"
-     docName="draft-spaghetti-grow-bcp-ext-comms-00"
+     docName="draft-spaghetti-grow-bcp-ext-comms-01"
      consensus="true"
      submissionType="IETF">
 
@@ -60,9 +60,9 @@
 
         <abstract>
             <t>
-                This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities in BGP announcements.
-                It includes guidance for both Internet Service Provider networks and Internet Exchange Points (IXPs).
-                This approach aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
+                This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities at Internet Exchange Point (IXP) Route Servers.
+                It includes guidance for both the Internet Service Provider side peering with Route Servers and IXPs operating Route Servers.
+                This recommendation aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
             </t>
         </abstract>
     </front>
@@ -70,9 +70,9 @@
     <middle>
         <section anchor="Introduction" title="Introduction">
             <t>
-                This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities <xref target="RFC4360"/> in BGP announcements.
-                It includes guidance for both Internet Service Provider networks and Internet Exchange Points (IXPs).
-                This approach aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
+                This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities <xref target="RFC4360"/> at Internet Exchange Point (IXP) Route Servers <xref target="RFC7947"/>, <xref target="RFC7948"/>.
+                It includes guidance for both the Internet Service Provider side peering with Route Servers and IXPs operating Route Servers.
+                This recomendation aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
             </t>
         </section>
 
@@ -84,7 +84,7 @@
 
         <section title="Background">
             <t>
-                The main use-case for Extended Communities are as Route Targets within VPN <xref target="RFC4364"/> deployments, but Extended Communities historically also have been used as an operational utility to signal requests to IXP Route Servers <xref target="RFC7947"/>, <xref target="RFC7948"/> such as functionality to reduce propagation scope or AS_PATH prepending.
+                The main use-case for Extended Communities are as Route Targets within VPN <xref target="RFC4364"/> deployments, but historically Extended Communities also have been used as an operational utility to signal requests to IXP Route Servers such as functionality to reduce propagation scope or request AS_PATH prepending.
             </t>
             <t>
                 Use of Extended Communities arose from a lack of support to fit 4-octet Autonomous System Numbers (ASNs) <xref target="RFC4893"/> in Classic BGP communities <xref target="RFC1997"/>, thus operators improvised a method that could allow BGP signaling from IXP participants with 4-octet ASN.
@@ -115,11 +115,9 @@
         </section>
 
         <section anchor="Acknowledgments" title="Acknowledgments">
-            <!--<t>
-                The authors would like to thank the following people for their contributions to this document:
-                    Moyaze Shivji "Linx.net"
-
-            </t> -->
+          <t>
+            TBD
+          </t>
         </section>
 
         <section anchor="Security" title="Security Considerations">
