@@ -112,14 +112,11 @@
              <t>
                   As an additional recommendation, Route Server operators should communicate a clear timeline for their clients to transition from Extended to Large communities.
              </t>
-            <t>
-                Finally, operators of Internet Exchange Route Servers are RECOMMENDED to scrub Extended Communities in both inbound and outbound directions.
-            </t>
         </section>
 
         <section anchor="Acknowledgments" title="Acknowledgments">
           <t>
-            The authors would like to thank Jeffrey Haas <jhaas@pfrc.org> and Martin Pels <mpels@ripe.net> for their useful feedback during the review process via the GROW mailing list.
+                 The authors would like to thank Jeffrey Haas and Martin Pels for their useful feedback during the review process through the GROW mailing list.
           </t>
         </section>
 
