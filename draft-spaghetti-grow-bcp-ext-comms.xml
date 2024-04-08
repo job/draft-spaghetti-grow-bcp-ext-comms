@@ -7,7 +7,7 @@
 
 <rfc category="bcp"
      ipr="trust200902"
-     docName="draft-spaghetti-grow-bcp-ext-comms-01"
+     docName="draft-spaghetti-grow-bcp-ext-comms-02"
      consensus="true"
      submissionType="IETF">
 
@@ -107,11 +107,22 @@
         </section>
         <section title="Recommendation">
             <t> 
-                 Route Server operators that match on route announcements with Extended Communities for 4-octet ASNs SHOULD replace these configurations with equivalent functionality implemented using Large Communities [RFC8092].
+                    Route Server operators that match on route announcements with Extended Communities for 4-octet ASNs SHOULD replace these configurations with equivalent functionality implemented using Large Communities <xref target="RFC8092"/>.
             </t>
              <t>
                   As an additional recommendation, Route Server operators should communicate a clear timeline for their clients to transition from Extended to Large communities.
              </t>
+             <t>
+             Finally, operators of Internet Exchange Route Servers are RECOMMENDED to:
+             </t>
+         <list style="symbols">
+             <t>
+                 Scrub the BGP Extended Communities at the inbound direction which are intendend for L3VPN purposes. That concerns the Extended communities where the sub-type value has been set to  0x02 (Route Target).
+        </t>
+        <t>
+          Allow the rest of the BGP Extended Communities transit transparently through the Route Servers. 
+        </t>
+        </list>   
         </section>
 
         <section anchor="Acknowledgments" title="Acknowledgments">
