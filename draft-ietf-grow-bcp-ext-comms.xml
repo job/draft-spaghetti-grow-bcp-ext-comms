@@ -9,6 +9,7 @@
      ipr="trust200902"
      docName="draft-spaghetti-grow-bcp-ext-comms-00"
      consensus="true"
+     updates="7948"
      submissionType="IETF">
 
     <front>
@@ -124,10 +125,36 @@
         </t>
         </list>
         </section>
+        <section title="Changes to RFC7948">
+          <t>
+            This document updates Section 4.6.1 of <xref target="RFC7948"/> to replace all occurrences of BGP Extended Communities with BGP Large Communities, as defined in <xref target="RFC8092"/>.
+          </t>
+            <dl newline="true">
+            <dt>Old Text:</dt>
+            <dd><t>
+                Prefixes sent to the route server are tagged with specific standard BGP Communities <xref target="RFC1997"/> or Extended Communities <xref target="RFC4360"/> attributes, based on predefined values agreed between the operator and all clients.
+            </t></dd>
+            <dt>New Text:</dt>
+            <dd><t>
+                Prefixes sent to the route server are tagged with specific standard BGP Communities <xref target="RFC1997"/> or BGP Large Communities <xref target="RFC8092"/> attributes, based on predefined values agreed between the operator and all clients.
+            </t></dd>
+            <dt>Old Text:</dt>
+            <dd><t>
+                As both standard BGP Communities and Extended Communities values are restricted to 6 octets or fewer, it is not possible for both the global and local administrator fields in the BGP Communities value to fit a 4-octet AS number.
+            </t></dd>
+            <dt>New Text:</dt>
+            <dd><t>
+                As a standard BGP Communities value is restricted to a total of 4 octets, it is not possible for both the global and local administrator fields in the BGP Communities value to fit a 4-octet AS number.
+            </t></dd>
+          </dl>
+          <t>
+            The Informative Reference to <xref target="RFC4360"/> in <xref target="RFC7948"/> is replaced with an Informative Reference to <xref target="RFC8092"/>.
+          </t>
+        </section>
 
         <section anchor="Acknowledgments" title="Acknowledgments">
           <t>
-                 The authors would like to thank Jeffrey Haas and Martin Pels for their useful feedback during the review process through the GROW mailing list.
+                 The authors would like to thank Jeffrey Haas, Nick Hilliard and Martin Pels for their useful feedback and suggestions during the review process through the GROW mailing list.
           </t>
         </section>
 
@@ -149,6 +176,7 @@
 
         <references title="Normative References">
             <?rfc include="reference.RFC.2119.xml"?>
+            <?rfc include="reference.RFC.7948.xml"?>
             <?rfc include="reference.RFC.8174.xml"?>
         </references>
         <references title="Informative References">
@@ -157,7 +185,6 @@
             <?rfc include="reference.RFC.4364.xml"?>
             <?rfc include="reference.RFC.4893.xml"?>
             <?rfc include="reference.RFC.7947.xml"?>
-            <?rfc include="reference.RFC.7948.xml"?>
             <?rfc include="reference.RFC.8092.xml"?>
 <!--
             <?rfc include="reference.RFC.7153.xml"?>
