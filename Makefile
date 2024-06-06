@@ -1,4 +1,4 @@
-BASENAME=draft-spaghetti-grow-bcp-ext-comms
+BASENAME=draft-ietf-grow-bcp-ext-comms
 
 EXT=.xml
 SOURCENAME=${BASENAME}${EXT}
