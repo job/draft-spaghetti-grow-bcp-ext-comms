@@ -14,7 +14,7 @@
 
     <front>
 
-        <title abbrev="Avoid Ext Comms">Recommendation to avoid use of BGP Extended Communities at Internet Exchange Route Servers</title>
+        <title abbrev="Avoid Extended BP Communities at IX RS">Guidance to Avoid Use of BGP Extended Communities at Internet Exchange Route Servers</title>
 
         <author fullname="Job Snijders" initials="J." surname="Snijders">
             <address>
@@ -62,6 +62,7 @@
                 This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities at Internet Exchange Point (IXP) Route Servers.
                 It includes guidance for both the Internet Service Provider side peering with Route Servers and IXPs operating Route Servers.
                 This recommendation aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
+                This document updates RFC 7948.
             </t>
         </abstract>
     </front>
@@ -72,6 +73,7 @@
                 This document outlines a recommendation to the Internet operational community to avoid the use of BGP Extended Communities <xref target="RFC4360"/> at Internet Exchange Point (IXP) Route Servers <xref target="RFC7947"/>, <xref target="RFC7948"/>.
                 It includes guidance for both the Internet Service Provider side peering with Route Servers and IXPs operating Route Servers.
                 This recomendation aims to help the global Internet routing system's performance and help protect Route Server participants against misconfigurations.
+                This document updates <xref target="RFC7948" />.
             </t>
         </section>
 
@@ -86,7 +88,7 @@
                 The main use-case for Extended Communities are as Route Targets within VPN <xref target="RFC4364"/> deployments, but historically Extended Communities also have been used as an operational utility to signal requests to IXP Route Servers such as functionality to reduce propagation scope or request AS_PATH prepending.
             </t>
             <t>
-                Use of Extended Communities arose from a lack of support to fit 4-octet Autonomous System Numbers (ASNs) <xref target="RFC4893"/> in Classic BGP communities <xref target="RFC1997"/>, thus operators improvised a method that could allow BGP signaling from IXP participants with 4-octet ASN.
+                The practise of using Extended Communities arose from the inability to fit 4-octet Autonomous System Numbers (ASNs) <xref target="RFC4893"/> in the fields of Classic BGP communities <xref target="RFC1997"/>, thus operators improvised a method that could allow BGP signaling from IXP participants with 4-octet ASN.
                 The 6-octet space for the Global and Local administrator part of the BGP Extended Community provides sufficient space for a single 4-octet ASN.
                 However, the 6-octet space is not sufficient enough should a 4-octet ASN participant of an IXP want to send a signal to a 4-octet ASN Route Server or to another 4-octet ASN participant.
                 Moreover, the flexibility to insert a 4-octet ASN either in the Global or the Local Administrator part, proved to bring extra complexity both in the BGP implementations and in the route propagation functions that are being triggered through BGP Extended Communities.
@@ -95,18 +97,18 @@
              <t>
                 BGP Large communities <xref target="RFC8092"/> addressed the operational requirements for working with 4-octet ASNs in a variety of scenarios.
                 With a total space of 12 octets divided into 3 separate fields, signalling between 2-octet ASNs and 4-octet ASNs, or 4-octet ASNs and 4-octet ASNs, making the use of BGP Extended Communities redundant.
-                Since the introduction of BGP Large communities in 2017 - by now - virtually all BGP implementations have adopted this standard, making this feature usable in all public Internet deployments.
+                As of May 2025, virtually all BGP implementations have adopted this standard, making this feature usable in all public Internet deployments.
              </t>
              <t>
                 At the moment of writing this recommendation, there are still IP Network and IXP operators that support BGP Extended Communities for IXP Route Server signaling purposes.
                 However, supporting three flavors of BGP Communities (Classic, Large, and Extended) contribute to increased memory consumption, increased complexity in Routing Policies, and reduced stability of the Internet ecosystem as BGP speakers need to send a BGP UPDATE message every time any type of BGP Community is added, removed, or modified.
-                As each and every BGP UPDATE message propagated and received requires CPU cycles for processing, any efforts that minimize the number of BGP UPDATE messages are advantageous for the routing system.
-                The authors of this document posit that Extended Communities are superfluous in context of the existence of Large Communities.
+                As each and every BGP UPDATE message propagated and received requires CPU cycles for processing, all efforts that minimize the number of BGP UPDATE messages are advantageous for the routing system.
+                In this context, Extended Communities are now considered superfluous because of the existence of Large Communities.
             </t>
         </section>
         <section title="Recommendation">
             <t>
-                    Route Server operators that match on route announcements with Extended Communities for 4-octet ASNs SHOULD replace these configurations with equivalent functionality implemented using Large Communities <xref target="RFC8092"/>.
+                    Route Server operators that currently match on route announcements with Extended Communities for 4-octet ASNs SHOULD replace these configurations with equivalent functionality implemented using Large Communities <xref target="RFC8092"/>.
             </t>
              <t>
                   As an additional recommendation, Route Server operators should communicate a clear timeline for their clients to transition from Extended to Large communities.
@@ -116,7 +118,8 @@
              </t>
          <list style="symbols">
              <t>
-                 Scrub the BGP Extended Communities at the inbound direction which are intendend for L3VPN purposes. That concerns the Extended communities where the sub-type value has been set to  0x02 (Route Target).
+                 Scrub the BGP Extended Communities at the inbound direction which are intendend for L3VPN purposes.
+                 That concerns the Extended communities where the sub-type value has been set to 0x02 (Route Target).
         </t>
         <t>
           Allow the rest of the BGP Extended Communities to transit transparently through the Route Servers.
@@ -125,22 +128,22 @@
         </section>
         <section title="Changes to RFC7948">
           <t>
-            This document updates Section 4.6.1 of <xref target="RFC7948"/> to replace all occurrences of BGP Extended Communities with BGP Large Communities, as defined in <xref target="RFC8092"/>.
+            This document updates <xref target="RFC7948" section="4.6.1"/> to replace all occurrences of BGP Extended Communities with BGP Large Communities.
           </t>
             <dl newline="true">
-            <dt>Old Text:</dt>
+            <dt>OLD:</dt>
             <dd><t>
                 Prefixes sent to the route server are tagged with specific standard BGP Communities <xref target="RFC1997"/> or Extended Communities <xref target="RFC4360"/> attributes, based on predefined values agreed between the operator and all clients.
             </t></dd>
-            <dt>New Text:</dt>
+            <dt>NEW:</dt>
             <dd><t>
                 Prefixes sent to the route server are tagged with specific standard BGP Communities <xref target="RFC1997"/> or BGP Large Communities <xref target="RFC8092"/> attributes, based on predefined values agreed between the operator and all clients.
             </t></dd>
-            <dt>Old Text:</dt>
+            <dt>OLD:</dt>
             <dd><t>
                 As both standard BGP Communities and Extended Communities values are restricted to 6 octets or fewer, it is not possible for both the global and local administrator fields in the BGP Communities value to fit a 4-octet AS number.
             </t></dd>
-            <dt>New Text:</dt>
+            <dt>NEW:</dt>
             <dd><t>
                 As a standard BGP Communities value is restricted to a total of 4 octets, it is not possible for both the global and local administrator fields in the BGP Communities value to fit a 4-octet AS number.
             </t></dd>
