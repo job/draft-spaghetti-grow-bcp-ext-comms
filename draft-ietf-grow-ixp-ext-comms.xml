@@ -7,7 +7,7 @@
 
 <rfc category="bcp"
      ipr="trust200902"
-     docName="draft-ietf-grow-ixp-ext-comms-01"
+     docName="draft-ietf-grow-ixp-ext-comms-02"
      consensus="true"
      updates="7948"
      submissionType="IETF">
@@ -17,13 +17,12 @@
         <title abbrev="Avoid Ext Comms">Recommendation to avoid use of BGP Extended Communities at Internet Exchange Route Servers</title>
 
         <author fullname="Job Snijders" initials="J." surname="Snijders">
-            <organization abbrev="Fastly">Fastly, Inc.</organization>
             <address>
                 <postal>
                     <city>Amsterdam</city>
                     <country>NL</country>
                 </postal>
-                <email>job@fastly.com</email>
+                <email>job@sobornost.net</email>
             </address>
         </author>
 
@@ -54,10 +53,9 @@
 
         <area>Routing</area>
         <workgroup>Global Routing Operations</workgroup>
-        <keyword>BGP</keyword>
-        <keyword>RPKI</keyword>
         <keyword>EBGP</keyword>
-        <keyword>sessions</keyword>
+        <keyword>Peering</keyword>
+        <keyword>IXP</keyword>
 
         <abstract>
             <t>

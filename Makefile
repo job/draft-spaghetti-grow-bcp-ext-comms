@@ -1,4 +1,4 @@
-BASENAME=draft-ietf-grow-bcp-ext-comms
+BASENAME=draft-ietf-grow-ixp-ext-comms
 
 EXT=.xml
 SOURCENAME=${BASENAME}${EXT}
